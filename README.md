@@ -81,3 +81,11 @@ The Raspberry Pi client consists of:
   - `tidskott-core` (Core video buffering library)
   - `tidskott-camera-pi` (Raspberry Pi camera implementation)
   - `tidskott-uploader` (Snapshot uploader)
+
+## TODO
+
+```
+- Trigger snapshot via HTTP (secure)
+- Status API
+- Tests
+```
