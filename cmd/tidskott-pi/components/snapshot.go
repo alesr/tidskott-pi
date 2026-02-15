@@ -12,7 +12,7 @@ import (
 	"time"
 
 	buffer "github.com/alesr/tidskott-core/pkg/buffer"
-	"github.com/alesr/tidskott-pi/internal/errutil"
+	"github.com/alesr/tidskott-pi/internal/pkg/errutil"
 	uploaderpkg "github.com/alesr/tidskott-uploader/pkg/uploader"
 )
 

@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/alesr/tidskott-pi/pkg/config"
+	"github.com/alesr/tidskott-pi/internal/pkg/config"
 )
 
 type flags struct {

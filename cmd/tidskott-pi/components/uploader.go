@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/alesr/tidskott-pi/internal/errutil"
+	"github.com/alesr/tidskott-pi/internal/pkg/errutil"
 	uploader "github.com/alesr/tidskott-uploader/pkg/uploader"
 )
 
