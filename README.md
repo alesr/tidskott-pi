@@ -75,11 +75,31 @@ The Raspberry Pi client consists of:
 
 ## Dependencies
 
-- **Hardware**: Raspberry Pi with camera module
+- **Hardware**:
+  - Raspberry Pi with camera module (for Raspberry Pi)
+  - Built-in or USB camera (for macOS)
 - **Software**:
-  - `rpicam-vid` (Raspberry Pi camera utility)
+  - `rpicam-vid` (Raspberry Pi camera utility, for Raspberry Pi only)
+  - `ffmpeg` (for macOS camera support)
   - `tidskott-core` (Core video buffering library)
   - `tidskott-uploader` (Snapshot uploader)
+
+## macOS Development
+
+To use `tidskott-pi` on macOS for local development:
+
+1. Install FFmpeg with `avfoundation` support:
+   ```bash
+   brew install ffmpeg
+   ```
+
+2. Grant camera permissions to your terminal app in:
+   **System Preferences > Security & Privacy > Camera**.
+
+3. Run `tidskott-pi`:
+   ```bash
+   ./bin/tidskott-pi
+   ```
 
 ## TODO
 

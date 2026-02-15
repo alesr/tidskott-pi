@@ -4,9 +4,12 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"runtime"
 	"time"
 
 	"github.com/alesr/tidskott-core/pkg/buffer"
+	"github.com/alesr/tidskott-core/pkg/interfaces"
+	"github.com/alesr/tidskott-pi/pkg/camera/macos"
 	"github.com/alesr/tidskott-pi/pkg/camera/raspberry"
 )
 
@@ -20,7 +23,12 @@ func NewVideoBuffer(
 	windowSeconds, snapshotDuration, snapshotInterval, width, height, fps, bitrate int,
 	codec string,
 ) (*VideoBuffer, error) {
-	cameraFactory := raspberry.NewRaspberryPiCameraFactory(logger)
+	var cameraFactory interfaces.Factory
+	if runtime.GOOS == "darwin" {
+		cameraFactory = macos.NewMacOSCameraFactory(logger, "0:none")
+	} else {
+		cameraFactory = raspberry.NewRaspberryPiCameraFactory(logger)
+	}
 
 	bufferOpts := []buffer.Option{
 		buffer.WithVideoSource(cameraFactory),
