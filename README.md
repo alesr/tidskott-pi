@@ -33,7 +33,7 @@ make build
 # run with default configuration
 ./bin/tidskott-pi
 
-# run with custom configuration file
+# or,
 ./bin/tidskott-pi --config /path/to/config.toml
 ```
 
@@ -68,7 +68,7 @@ The client uses a single configuration file named `config.toml` in the current d
 
 The Raspberry Pi client consists of:
 
-1. **Camera Source**: Uses `rpicam-vid` to capture video from the Raspberry Pi camera
+1. **Camera Source**: Built-in Raspberry Pi camera support using `rpicam-vid`
 2. **Video Buffer**: Maintains a rolling window of video frames using `tidskott-core`
 3. **Snapshot Generator**: Extracts video segments from the buffer on demand
 4. **Uploader**: Uploads snapshots to a remote server using `tidskott-uploader`
@@ -79,7 +79,6 @@ The Raspberry Pi client consists of:
 - **Software**:
   - `rpicam-vid` (Raspberry Pi camera utility)
   - `tidskott-core` (Core video buffering library)
-  - `tidskott-camera-pi` (Raspberry Pi camera implementation)
   - `tidskott-uploader` (Snapshot uploader)
 
 ## TODO
