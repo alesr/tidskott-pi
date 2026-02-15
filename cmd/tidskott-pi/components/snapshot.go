@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	buffer "github.com/alesr/tidskott-core/pkg/buffer"
+	"github.com/alesr/tidskott-core/pkg/buffer"
 	"github.com/alesr/tidskott-pi/internal/pkg/errutil"
-	uploaderpkg "github.com/alesr/tidskott-uploader/pkg/uploader"
+	"github.com/alesr/tidskott-uploader/pkg/uploader"
 )
 
 type SnapshotHandler struct {
@@ -183,7 +183,7 @@ func (sh *SnapshotHandler) processSnapshot(snapshot *buffer.Snapshot) {
 		"auth_enabled": fmt.Sprintf("%v", sh.authEnabled),
 	}
 
-	uploadSnapshot := &uploaderpkg.Snapshot{
+	uploadSnapshot := &uploader.Snapshot{
 		ID:         snapshot.ID,
 		Path:       snapshot.VideoPath,
 		Timestamp:  snapshot.Timestamp,

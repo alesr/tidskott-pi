@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/alesr/tidskott-camera-pi/pkg/raspberry"
-	buffer "github.com/alesr/tidskott-core/pkg/buffer"
+	"github.com/alesr/tidskott-core/pkg/buffer"
 )
 
 type VideoBuffer struct {

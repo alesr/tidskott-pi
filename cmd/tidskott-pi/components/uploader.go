@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/alesr/tidskott-pi/internal/pkg/errutil"
-	uploader "github.com/alesr/tidskott-uploader/pkg/uploader"
+	"github.com/alesr/tidskott-uploader/pkg/uploader"
 )
 
 type Uploader struct {
