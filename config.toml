@@ -1,0 +1,23 @@
+
+[device]
+id = "rbpicam-device"
+name = "Raspberry Pi Camera"
+
+width = 4056
+height = 3040
+fps = 60
+
+duration = 5
+interval = 5
+
+[uploader]
+endpoint = "http://localhost:8080/upload"
+max_retries = 3
+workers = 2
+delete_after_upload = true
+
+[auth]
+enabled = false
+endpoint = "/auth/token"
+client_id = "tidskott-client"
+client_secret = "tidskott-secret"
