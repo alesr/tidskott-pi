@@ -33,7 +33,7 @@ make build
 # run with default configuration
 ./bin/tidskott-pi
 
-# or,
+# Or, with custom config
 ./bin/tidskott-pi --config /path/to/config.toml
 ```
 
