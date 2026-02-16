@@ -18,7 +18,6 @@ import (
 
 var _ interfaces.CameraSource = (*MacOSCamera)(nil)
 
-// MacOSCamera implements a camera source for macOS using AVFoundation via FFmpeg.
 type MacOSCamera struct {
 	// config
 	logger     *slog.Logger
@@ -101,7 +100,7 @@ func (c *MacOSCamera) Start(ctx context.Context) error {
 		"-f", "mpegts", // use MPEG-TS format which is better for live streaming
 		"-flush_packets", "1", // flush packets immediately
 		"-muxdelay", "0", // no delay in muxing
-		"-muxpreload", "0", // No preload in muxing
+		"-muxpreload", "0", // no preload in muxing
 		"-y", // overwrite out file
 		c.outputPath,
 	}
