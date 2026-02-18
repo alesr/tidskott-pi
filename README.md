@@ -101,11 +101,3 @@ To use `tidskott-pi` on macOS for local development:
    ```bash
    ./bin/tidskott-pi
    ```
-
-## TODO
-
-```
-- trigger snapshots via http (secure)
-- observability (grafana/prom)
-- tests!
-```
