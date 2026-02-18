@@ -6,23 +6,20 @@ Raspberry Pi client for the Tidskott video streaming system.
 
 Tidskott Pi is a minimal Raspberry Pi client that captures video from the Raspberry Pi camera, maintains a rolling buffer of the most recent video frames, and uploads snapshots to a remote server.
 
-> ⚠️ **Work in progress:** 
-```bash
-    - wire external dependencies
-    - tests!
-    - trigger snapshots via http (secure)
-    - observability (grafana/prometheus)
-    - CI
-```
-
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/eef32d52-2dbb-44f9-9469-4e33f36620ab">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/38090b80-1fc0-4db2-8ea0-bd2c398b821d">
-  <img 
-    src="https://github.com/user-attachments/assets/38090b80-1fc0-4db2-8ea0-bd2c398b821d" 
-    alt="System architecture diagram" 
-    style="max-width: 100%; height: auto;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/d1d04c98-95d4-48fb-93cb-2e82440f715d">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d94bd4eb-6587-420f-bd45-53ee358afdb9">
+  <img alt="Big Picture" src="https://github.com/user-attachments/assets/d94bd4eb-6587-420f-bd45-53ee358afdb9">
 </picture>
+
+
+> [!WARNING]
+> ### 🚧 Work In Progress
+> - [ ] **Wire dependencies**
+> - [ ] **Tests**
+> - [ ] **CI Pipeline**
+> - [ ] **Secure HTTP Snapshots** (Triggering mechanism)
+> - [ ] **Observability** (Grafana/Prometheus integration)
 
 ## Usage
 
