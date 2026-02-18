@@ -15,6 +15,14 @@ Tidskott Pi is a minimal Raspberry Pi client that captures video from the Raspbe
     - CI
 ```
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/eef32d52-2dbb-44f9-9469-4e33f36620ab">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/38090b80-1fc0-4db2-8ea0-bd2c398b821d">
+  <img 
+    src="https://github.com/user-attachments/assets/38090b80-1fc0-4db2-8ea0-bd2c398b821d" 
+    alt="System architecture diagram" 
+    style="max-width: 100%; height: auto;">
+</picture>
 
 ## Usage
 
