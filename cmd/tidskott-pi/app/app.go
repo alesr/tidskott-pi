@@ -54,11 +54,11 @@ func Run() error {
 	if err != nil {
 		return fmt.Errorf("could not create video buffer: %w", err)
 	}
-	defer stopVideoBuffer(videoBuffer, logger)
 
 	if err := videoBuffer.Start(ctx); err != nil {
 		return fmt.Errorf("could not start video buffer: %w", err)
 	}
+	defer stopVideoBuffer(videoBuffer, logger)
 
 	uploader, err := components.NewUploader(
 		logger,

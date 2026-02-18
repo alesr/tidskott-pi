@@ -30,15 +30,35 @@ func NewVideoBuffer(
 		cameraFactory = raspberry.NewRaspberryPiCameraFactory(logger)
 	}
 
+	// TODO(alesr): move validation
+
+	// validate window duration
+	window := time.Duration(windowSeconds) * time.Second
+	if window < 5*time.Second {
+		return nil, fmt.Errorf("window duration must be at least 5 seconds, got %s", window)
+	}
+
+	// validate snapshot duration
+	snapshotDur := time.Duration(snapshotDuration) * time.Second
+	if snapshotDur < 1*time.Second {
+		return nil, fmt.Errorf("snapshot duration must be at least 1 second, got %s", snapshotDur)
+	}
+
+	// validate snapshot interval
+	snapshotIntervalDur := time.Duration(snapshotInterval) * time.Second
+	if snapshotIntervalDur < 1*time.Second {
+		return nil, fmt.Errorf("snapshot interval must be at least 1 second, got %s", snapshotIntervalDur)
+	}
+
 	bufferOpts := []buffer.Option{
 		buffer.WithVideoSource(cameraFactory),
-		buffer.WithWindow(time.Duration(windowSeconds)),
+		buffer.WithWindow(window),
 		buffer.WithFrameSize(width * height),
 		buffer.WithFPS(fps),
 		buffer.WithBitrate(bitrate),
 		buffer.WithVideoCodec(codec),
-		buffer.WithSnapshotDuration(time.Duration(snapshotDuration)),
-		buffer.WithSnapshotInterval(time.Duration(snapshotInterval)),
+		buffer.WithSnapshotDuration(snapshotDur),
+		buffer.WithSnapshotInterval(snapshotIntervalDur),
 	}
 
 	vb, err := buffer.NewBuffer(logger, bufferOpts...)

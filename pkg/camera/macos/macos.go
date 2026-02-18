@@ -32,6 +32,14 @@ type MacOSCamera struct {
 	processState *os.ProcessState
 }
 
+func isNamedPipe(path string) bool {
+	info, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return info.Mode()&os.ModeNamedPipe != 0
+}
+
 func NewMacOSCameraFactory(logger *slog.Logger, deviceID string) interfaces.Factory {
 	return func(outputPath string, config interfaces.Config) (interfaces.CameraSource, error) {
 		return NewMacOSCamera(logger, config, deviceID, outputPath)
@@ -72,9 +80,11 @@ func (c *MacOSCamera) Start(ctx context.Context) error {
 		return fmt.Errorf("failed to create output directory: %w", err)
 	}
 
-	// rm existing output file if it exists
+	// rm existing output file if it exists (skip if fifo)
 	if _, err := os.Stat(c.outputPath); err == nil {
-		if err := os.Remove(c.outputPath); err != nil {
+		if isNamedPipe(c.outputPath) {
+			c.logger.Debug("Output path is a fifo, skipping removal", "path", c.outputPath)
+		} else if err := os.Remove(c.outputPath); err != nil {
 			c.logger.Warn("Failed to remove existing output file", "path", c.outputPath, "error", err)
 		}
 	}
@@ -171,14 +181,21 @@ func (c *MacOSCamera) Start(ctx context.Context) error {
 
 		case <-fileCheckTicker.C:
 			// check if the file exists and has data
-			if stat, err := os.Stat(c.outputPath); err == nil && stat.Size() > 0 {
-				fileCreated = true
-
-				c.logger.Info(
-					"Camera output file created",
-					"path", c.outputPath,
-					"size", stat.Size(),
-				)
+			if stat, err := os.Stat(c.outputPath); err == nil {
+				if stat.Mode()&os.ModeNamedPipe != 0 {
+					fileCreated = true
+					c.logger.Info(
+						"Camera output fifo ready",
+						"path", c.outputPath,
+					)
+				} else if stat.Size() > 0 {
+					fileCreated = true
+					c.logger.Info(
+						"Camera output file created",
+						"path", c.outputPath,
+						"size", stat.Size(),
+					)
+				}
 			}
 
 		case line, ok := <-outputChan:
