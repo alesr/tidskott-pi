@@ -6,21 +6,22 @@ Raspberry Pi client for the Tidskott video streaming system.
 
 Tidskott Pi is a minimal Raspberry Pi client that captures video from the Raspberry Pi camera, maintains a rolling buffer of the most recent video frames, and uploads snapshots to a remote server.
 
-## Features
+> ⚠️ **Work in progress:** 
+```bash
+    - wire external dependencies
+    - tests!
+    - trigger snapshots via http (secure)
+    - observability (grafana/prometheus)
+    - CI
+```
 
-- **Single Configuration File**: All configuration in one TOML file
-- **Minimal Footprint**: Optimized for Raspberry Pi
-- **Efficient**: Uses in-memory buffering to minimize disk I/O
-- **Robust**: Comprehensive error handling and retry logic
-- **Authentication**: Supports JWT-based authentication
-- **Validation**: Built-in configuration validation
 
 ## Usage
 
 ### Building
 
 ```bash
-# build for Raspberry Pi (ARMv7)
+# build for raspberry pi
 make build-pi
 
 # build for local development
@@ -66,23 +67,23 @@ The client uses a single configuration file named `config.toml` in the current d
 
 ## Architecture
 
-The Raspberry Pi client consists of:
+The Raspberry PI client consists of:
 
-1. **Camera Source**: Built-in Raspberry Pi camera support using `rpicam-vid`
-2. **Video Buffer**: Maintains a rolling window of video frames using `tidskott-core`
-3. **Snapshot Generator**: Extracts video segments from the buffer on demand
-4. **Uploader**: Uploads snapshots to a remote server using `tidskott-uploader`
+1. **camera source**: built-in Raspberry Pi camera support using `rpicam-vid`
+2. **video buffer**: maintains a rolling window of video frames using `tidskott-core`
+3. **snapshot generator**: extracts video segments from the buffer on demand
+4. **uploader**: uploads snapshots to a remote server using `tidskott-uploader`
 
 ## Dependencies
 
-- **Hardware**:
-  - Raspberry Pi with camera module (for Raspberry Pi)
-  - Built-in or USB camera (for macOS)
-- **Software**:
-  - `rpicam-vid` (Raspberry Pi camera utility, for Raspberry Pi only)
-  - `ffmpeg` (for macOS camera support)
-  - `tidskott-core` (Core video buffering library)
-  - `tidskott-uploader` (Snapshot uploader)
+- **hardware**:
+  - raspberry pi with camera module (for raspberry pi)
+  - built-in or usb camera (for macos)
+- **software**:
+  - `rpicam-vid` (raspberry pi camera utility, for raspberry pi only)
+  - `ffmpeg` (for macos camera support)
+  - `tidskott-core` (core video buffering library)
+  - `tidskott-uploader` (snapshot uploader)
 
 ## macOS Development
 
@@ -104,7 +105,7 @@ To use `tidskott-pi` on macOS for local development:
 ## TODO
 
 ```
-- Trigger snapshot via HTTP (secure)
-- Status API
-- Tests
+- trigger snapshots via http (secure)
+- observability (grafana/prom)
+- tests!
 ```
